@@ -151,9 +151,9 @@ def main():
     ap.add_argument("--dnn", default="mobilevit_s")
     ap.add_argument("--thresholds", nargs="+", type=int, default=[80, 90])
     ap.add_argument("--results-dir", type=Path,
-                    default=Path(__file__).parent.parent / "all_results_v2" / "plot_ready")
+                    default=Path(__file__).parent / "plot_ready")
     ap.add_argument("--out-dir", type=Path,
-                    default=Path(__file__).parent.parent / "all_results_v2" / "plots")
+                    default=Path(__file__).parent / "plots")
     args = ap.parse_args()
 
     args.out_dir.mkdir(parents=True, exist_ok=True)

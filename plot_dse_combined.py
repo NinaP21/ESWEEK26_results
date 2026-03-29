@@ -156,7 +156,7 @@ def main():
     ap.add_argument("--T-threshold", type=float, default=343.15,
                     help="Thermal threshold in K (default: 343.15 = 70°C)")
     ap.add_argument("--results-dir", type=Path,
-                    default=Path(__file__).parent.parent / "all_results_v2" / "plot_ready")
+                    default=Path(__file__).parent / "plot_ready")
     ap.add_argument("--out-dir", type=Path, default=None)
     ap.add_argument("--rolling-window", type=int, default=100)
     ap.add_argument("--last-n", nargs="*", default=[], metavar="ALGO:N")
@@ -169,7 +169,7 @@ def main():
         algo, n = entry.split(":", 1)
         last_n_map[algo] = int(n)
 
-    out_dir = args.out_dir or (Path(__file__).parent.parent / "all_results_v2" / "plots")
+    out_dir = args.out_dir or (Path(__file__).parent / "plots")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     algo_data: dict[str, dict[str, list]] = {}

@@ -139,11 +139,11 @@ def main():
     ap.add_argument("--temp-label", default="70c")
     ap.add_argument("--T-threshold", type=float, default=343.15)
     ap.add_argument("--results-dir", type=Path,
-                    default=Path(__file__).parent.parent / "all_results_v2" / "plot_ready")
+                    default=Path(__file__).parent / "plot_ready")
     ap.add_argument("--out-dir", type=Path, default=None)
     args = ap.parse_args()
 
-    out_dir = args.out_dir or (Path(__file__).parent.parent / "docs" / "scatter_plots")
+    out_dir = args.out_dir or (Path(__file__).parent / "plots")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     algo_data: dict[str, dict[str, list]] = {}
