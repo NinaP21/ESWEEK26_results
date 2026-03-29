@@ -33,10 +33,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ALGO_META = {
-    "turbo":  ("Ours",       "#1b9e77", "-",  2.0),
-    "nsga2":  ("NSGA-II",    "#f0a500", "-",  1.5),
-    "ucb":    ("VAESA",      "#9ecae1", "-",  1.5),
-    "msa":    ("TREAD-M3D",  "#636363", "-",  1.5),
+    "turbo":    ("Ours (m=4)",   "#1b9e77", "-",  2.0),
+    "turbo_m1": ("Ours (m=1)",   "#74c476", "--", 1.5),
+    "nsga2":    ("NSGA-II",      "#f0a500", "-",  1.5),
+    "ucb":      ("VAESA",        "#9ecae1", "-",  1.5),
+    "msa":      ("TREAD-M3D",    "#636363", "-",  1.5),
 }
 
 _SCREENING_PHASES = {"screening"}
