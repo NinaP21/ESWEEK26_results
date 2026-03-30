@@ -12,6 +12,7 @@ This repository contains the DSE (Design Space Exploration) experiment results a
 ├── plot_best_temperature.py    # Temperature of best feasible solution over evaluations
 ├── plot_convergence_grid.py    # Convergence grid across thresholds and objectives
 ├── plot_dse_combined.py        # Combined convergence plot (EDP and Delay side by side)
+├── plot_dse_comparison.py      # Scatter plots of all evaluations per algorithm (2×2 grid)
 ├── dse_results.csv             # Final DSE results table (all algorithms, DNNs, objectives)
 └── plot_ready/
     ├── turbo/                  # Ours — TuRBO logCEI explorer, m=4 (full runs)
@@ -97,7 +98,21 @@ python plot_convergence_grid.py --dnn mobilebert --thresholds 80 90
 
 ---
 
-### 4. `plot_dse_combined.py`
+### 4. `plot_dse_comparison.py`
+
+Scatter plots of all DSE evaluations (green=feasible, red=infeasible) with a running-best step line for each algorithm. Produces a 2×2 grid per objective (one subplot per algorithm).
+
+```bash
+python plot_dse_comparison.py --dnn mobilevit_s --T 80
+python plot_dse_comparison.py --dnn resnet18 --T 70
+python plot_dse_comparison.py --dnn mobilebert --T 90
+```
+
+**Output:** `plots/<dnn>_dse_comparison_<T>c_{combined.png,delay.pdf,edp.pdf}`
+
+---
+
+### 5. `plot_dse_combined.py`
 
 Plots convergence curves for EDP and Delay side by side, for a single DNN and temperature threshold.
 
