@@ -39,10 +39,10 @@ import numpy as np
 
 # (label, color, linestyle, linewidth, marker, markersize)
 ALGO_META = {
+    "msa":   (r"TREAD-M3D~\cite{shukla2023tread}", "#636363", "-",  1.5, "D", 3),
+    "nsga2": (r"MACO~\cite{zhong2025maco}", "#f0a500", "-",  1.5, "s", 3),
+    "ucb":   (r"VAESA-BO~\cite{liu2023deepoheat}", "#9ecae1", "-",  1.5, "^", 3),
     "turbo": ("Ours",       "#1b9e77", "-",  3.0, "o", 6),
-    "nsga2": ("NSGA-II",    "#f0a500", "-",  1.5, "s", 3),
-    "ucb":   ("VAESA",      "#9ecae1", "-",  1.5, "^", 3),
-    "msa":   ("TREAD-M3D",  "#636363", "-",  1.5, "D", 3),
 }
 
 OBJ_LABELS = {
@@ -96,7 +96,12 @@ def make_grid(dnn: str, thresholds: list[int], results_dir: Path, out_path: Path
     n_rows = len(thresholds)
     n_cols = len(objs)
 
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(6.5, 2.4 * n_rows))
+    fig, axes = plt.subplots(
+        n_rows,
+        n_cols,
+        figsize=(6.5, 2.4 * n_rows),
+        squeeze=False,
+    )
 
     for row, T_C in enumerate(thresholds):
         T_K = T_C + 273.15

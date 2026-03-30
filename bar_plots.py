@@ -189,9 +189,9 @@ def grouped_bar_plot_normalized(df_obj, suffix, ylabel, save_prefix, variance_st
     ax.spines["right"].set_visible(False)
 
     label_map = {
-        "NSGA-II": "NSGA-II",
-        "MSA": "TREAD-M3D",
-        "UCB": "VAESA",
+        "NSGA-II": r"MACO~\cite{zhong2025maco}",
+        "MSA": r"TREAD-M3D~\cite{shukla2023tread}",
+        "UCB": r"VAESA-BO~\cite{liu2023deepoheat}",
         "Explorer": "Ours",
     }
 

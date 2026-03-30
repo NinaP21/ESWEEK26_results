@@ -148,3 +148,19 @@ python plot_dse_combined.py --dnn mobilevit_s --temp-label 90c --T-threshold 363
 | `nsga2`    | NSGA-II      | Baseline                           |
 | `ucb`      | VAESA        | Baseline                           |
 | `msa`      | TREAD-M3D    | Baseline                           |
+
+---
+
+## Commands Used For The Paper Figures
+
+The following four commands regenerate exactly the figures currently included in the paper.
+
+```bash
+python bar_plots.py
+
+python plot_dse_comparison.py --dnn mobilevit_s --T 70
+
+python plot_best_temperature.py --dnn mobilevit_s --objective delay --temp-labels 70c 80c 90c --T-thresholds 343.15 353.15 363.15 --algos turbo nsga2 ucb msa --out-name mobilevit_s_delay_best_temperature
+
+python plot_convergence_grid.py --dnn mobilevit_s --thresholds 80 90
+```
