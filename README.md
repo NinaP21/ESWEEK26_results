@@ -8,9 +8,11 @@ This repository contains the DSE (Design Space Exploration) experiment results a
 
 ```
 .
+├── bar_plots.py                # Normalized bar charts of final DSE results
 ├── plot_best_temperature.py    # Temperature of best feasible solution over evaluations
 ├── plot_convergence_grid.py    # Convergence grid across thresholds and objectives
 ├── plot_dse_combined.py        # Combined convergence plot (EDP and Delay side by side)
+├── dse_results.csv             # Final DSE results table (all algorithms, DNNs, objectives)
 └── plot_ready/
     ├── turbo/                  # Ours — TuRBO logCEI explorer, m=4 (full runs)
     ├── turbo_m1/               # Ours — TuRBO logCEI explorer, m=1
@@ -44,7 +46,19 @@ A LaTeX installation (e.g. `texlive`) is required for PGF/PDF output. PNG output
 
 ## Scripts
 
-### 1. `plot_best_temperature.py`
+### 1. `bar_plots.py`
+
+Plots normalized bar charts of final DSE results (EDP and Delay) across all DNNs and temperature thresholds. Each algorithm is normalized to the MSA (TREAD-M3D) baseline. Reads from `dse_results.csv` (bundled in the repo).
+
+```bash
+python bar_plots.py
+```
+
+**Output:** `plots/normalized_{EDP,DELAY}_{70,80,90}C.{png,pgf}`
+
+---
+
+### 2. `plot_best_temperature.py`
 
 Plots the temperature of the running-best feasible solution over evaluations, with one panel per objective (EDP and Delay).
 
@@ -66,7 +80,7 @@ python plot_best_temperature.py --dnn mobilevit_s --temp-label 80c --algos turbo
 
 ---
 
-### 2. `plot_convergence_grid.py`
+### 3. `plot_convergence_grid.py`
 
 Plots a grid of convergence curves: one row per temperature threshold, two columns for EDP and Delay objectives. All algorithms are overlaid as lines.
 
@@ -83,7 +97,7 @@ python plot_convergence_grid.py --dnn mobilebert --thresholds 80 90
 
 ---
 
-### 3. `plot_dse_combined.py`
+### 4. `plot_dse_combined.py`
 
 Plots convergence curves for EDP and Delay side by side, for a single DNN and temperature threshold.
 
