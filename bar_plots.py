@@ -1,3 +1,4 @@
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -30,7 +31,7 @@ import matplotlib.ticker
 # =========================
 # Load CSV
 # =========================
-csv_file = "dse_results.csv"
+csv_file = Path(__file__).parent / "dse_results.csv"
 df = pd.read_csv(csv_file)
 
 # =========================
@@ -250,7 +251,9 @@ for threshold in all_thresholds:
             print(f"Skipping unsupported objective: {objective}")
             continue
 
-        save_prefix = f"normalized_{sanitize_filename(objective_upper)}_{sanitize_filename(threshold)}C"
+        out_dir = Path(__file__).parent / "plots"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        save_prefix = str(out_dir / f"normalized_{sanitize_filename(objective_upper)}_{sanitize_filename(threshold)}C")
 
         grouped_bar_plot_normalized(
             df_obj=df_obj, suffix=suffix, ylabel=ylabel,
